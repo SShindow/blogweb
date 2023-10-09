@@ -1,24 +1,27 @@
-"use client"
+"use client";
 
-import React from 'react'
-import styles from './themeToggle.module.css'
-import { useContext } from 'react';
-import { ThemeContext } from '@/context/ThemeContext';
+import Image from "next/image";
+import styles from "./themeToggle.module.css";
+import { useContext } from "react";
+import { ThemeContext } from "@/context/ThemeContext";
 
 const ThemeToggle = () => {
-
-  const {theme} = useContext(ThemeContext)
-
-  console.log(theme + ' mode')
+  const { toggle, theme } = useContext(ThemeContext);
 
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      
+    >
       <label class={styles.switch}>
-          <input type="checkbox"/>
-          <span class={styles.slider}></span>
+        <input type="checkbox" onClick={toggle}
+      style={
+        theme === "dark" ? { backgroundColor: "white" } : { backgroundColor: "#0f172a" }
+      } />
+        <span class={styles.slider}></span>
       </label>
     </div>
   );
 };
 
-export default ThemeToggle
+export default ThemeToggle;
